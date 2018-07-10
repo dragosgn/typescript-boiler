@@ -12,7 +12,6 @@ module.exports = {
   devtool: "source-map",
 
   devServer: {
-    contentBase: sourcePath,
     hot: true,
     inline: true,
     historyApiFallback: {
@@ -37,7 +36,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: "assets/index.html"
+      template: "index.html"
     })
   ],
 
