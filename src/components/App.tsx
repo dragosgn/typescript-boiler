@@ -1,4 +1,15 @@
 import * as React from "react";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { Route, Link } from "react-router-dom";
 
-export default () => <div>This is home</div>;
+const Greeting = () => <h1>Hello there</h1>;
+
+export default () => (
+  <div>
+    <div>
+      <Link to="/greeting">Greet</Link>
+    </div>
+    <div>
+      <Route path="/greeting" component={Greeting} />
+    </div>
+  </div>
+);
