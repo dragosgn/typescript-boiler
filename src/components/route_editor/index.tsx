@@ -21,15 +21,11 @@ const ButtonRow = styled.div`
   margin-bottom: 1rem;
 `;
 
-interface EditorProps {
-  editor: {};
-}
-
 interface EditorState {
   code: string;
 }
 
-class Editor extends React.Component<EditorProps, EditorState> {
+class Editor extends React.Component<{}, EditorState> {
   constructor(props) {
     super(props);
     this.state = {
@@ -41,15 +37,10 @@ class Editor extends React.Component<EditorProps, EditorState> {
     this.setState({ code: newValue });
   };
 
-  editorDidMount = editor => {
-    this.editor = editor;
-  };
-
-  changeEditorValue = () => {
-    if (this.editor) {
-      this.editor.setValue("// code changed! \n");
-    }
-  };
+  editorDidMount(editor) {
+    console.log("editorDidMount", editor);
+    editor.focus();
+  }
 
   changeBySetState = () => {
     this.setState({ code: "// code changed by setState! \n" });
