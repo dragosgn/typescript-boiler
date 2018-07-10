@@ -116,14 +116,12 @@ const Home = () => (
           src="https://lokalleads.s3.amazonaws.com/images/homepage/logo_bw.png"
         />
       </Logo>
-      <AuthButton />
       <SideNavLink to="/pdf-template-editor">Pdf editor</SideNavLink>
     </SideNav>
     <MainContent>
       <SubNav />
       <Content>
         <PrivateRoute path="/pdf-template-editor" component={CodeEditor} />
-        <Route path="/login" component={Login} />
       </Content>
     </MainContent>
   </Root>
