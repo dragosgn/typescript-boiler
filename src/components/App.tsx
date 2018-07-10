@@ -1,5 +1,17 @@
 import * as React from "react";
-import { Route, Link, Redirect, withRouter } from "react-router-dom";
+import { Route, Link, Redirect, withRouter, Switch } from "react-router-dom";
+import styled from "styled-components";
+import {
+  Logo,
+  SideNav,
+  SideNavLink,
+  MainContent,
+  Content,
+  SubNav
+} from "./styled";
+import CodeEditor from "./route_editor";
+
+const Root = styled.div``;
 
 const Greeting = () => <h1>Hello there</h1>;
 const Public = () => <h3>Public</h3>;
@@ -97,17 +109,34 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
 
 export default () => (
   <div>
+    <Root>
+      <SideNav>
+        <Logo>
+          <img
+            height={50}
+            src="https://lokalleads.s3.amazonaws.com/images/homepage/logo_bw.png"
+          />
+        </Logo>
+        <SideNavLink to="/pdf-template-editor">Pdf editor</SideNavLink>
+        {/* <ul>
+          <li>
+            <Link to="/public">Public Page</Link>
+          </li>
+          <li>
+            <Link to="/protected">Protected Page</Link>
+          </li>
+        </ul> */}
+      </SideNav>
+      <MainContent>
+        <SubNav />
+        <Content>
+          <Switch>
+            <PrivateRoute path="/pdf-template-editor" component={CodeEditor} />
+            <Route path="/login" component={Login} />
+          </Switch>
+        </Content>
+      </MainContent>
+    </Root>
     <AuthButton />
-    <ul>
-      <li>
-        <Link to="/public">Public Page</Link>
-      </li>
-      <li>
-        <Link to="/protected">Protected Page</Link>
-      </li>
-    </ul>
-    <Route path="/public" component={Public} />
-    <Route path="/login" component={Login} />
-    <PrivateRoute path="/protected" component={Protected} />
   </div>
 );
