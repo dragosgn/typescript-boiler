@@ -146,7 +146,7 @@ const Home = () => (
 export default () => (
   <Root>
     {/* <AuthButton /> */}
-    <Route path="/login" component={Login} />
+    <Route exact path="/login" component={Login} />
     <PrivateRoute path="/" component={Home} />
   </Root>
 );
