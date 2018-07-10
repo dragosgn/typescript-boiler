@@ -39,7 +39,8 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: "index.html"
-    })
+    }),
+    new MonacoWebpackPlugin()
   ],
 
   // When importing a module whose path matches one of the following, just

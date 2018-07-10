@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import MonacoEditor from "react-monaco-editor";
 import styled from "styled-components";
 
@@ -21,7 +21,9 @@ const ButtonRow = styled.div`
   margin-bottom: 1rem;
 `;
 
-interface EditorProps {}
+interface EditorProps {
+  editor: {};
+}
 
 interface EditorState {
   code: string;
