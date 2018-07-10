@@ -107,36 +107,41 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
   />
 );
 
+const Home = () => (
+  <Root>
+    <SideNav>
+      <Logo>
+        <img
+          height={50}
+          src="https://lokalleads.s3.amazonaws.com/images/homepage/logo_bw.png"
+        />
+      </Logo>
+      <AuthButton />
+      <SideNavLink to="/pdf-template-editor">Pdf editor</SideNavLink>
+    </SideNav>
+    <MainContent>
+      <SubNav />
+      <Content>
+        <PrivateRoute path="/pdf-template-editor" component={CodeEditor} />
+        <Route path="/login" component={Login} />
+      </Content>
+    </MainContent>
+  </Root>
+);
+
 export default () => (
   <div>
-    <Root>
-      <SideNav>
-        <Logo>
-          <img
-            height={50}
-            src="https://lokalleads.s3.amazonaws.com/images/homepage/logo_bw.png"
-          />
-        </Logo>
-        <SideNavLink to="/pdf-template-editor">Pdf editor</SideNavLink>
-        {/* <ul>
-          <li>
-            <Link to="/public">Public Page</Link>
-          </li>
-          <li>
-            <Link to="/protected">Protected Page</Link>
-          </li>
-        </ul> */}
-      </SideNav>
-      <MainContent>
-        <SubNav />
-        <Content>
-          <Switch>
-            <PrivateRoute path="/pdf-template-editor" component={CodeEditor} />
-            <Route path="/login" component={Login} />
-          </Switch>
-        </Content>
-      </MainContent>
-    </Root>
     <AuthButton />
+    <ul>
+      <li>
+        <Link to="/public">Public Page</Link>
+      </li>
+      <li>
+        <Link to="/protected">Protected Page</Link>
+      </li>
+    </ul>
+    <Route path="/public" component={Public} />
+    <Route path="/login" component={Login} />
+    <PrivateRoute path="/protected" component={Home} />
   </div>
 );
