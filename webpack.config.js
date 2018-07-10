@@ -3,7 +3,7 @@ var HtmlWebpackPlugin = require("html-webpack-plugin");
 var MonacoWebpackPlugin = require("monaco-editor-webpack-plugin");
 
 module.exports = {
-  entry: ["react-hot-loader/patch", "./src/index.tsx"],
+  entry: "./src/index.tsx",
   output: {
     publicPath: "/dist",
     filename: "bundle.js",
@@ -22,25 +22,23 @@ module.exports = {
     stats: "minimal"
   },
 
-  resolve: {
-    // Add '.ts' and '.tsx' as resolvable extensions.
-    extensions: [".ts", ".tsx", ".js", ".json"]
-  },
   node: {
     fs: "empty"
   },
   module: {
     rules: [
-      // All files with a '.ts' or '.tsx' extension will be handled by 'awesome-typescript-loader'.
       { test: /\.tsx?$/, loader: "awesome-typescript-loader" },
 
-      // All output '.js' files will have any sourcemaps re-processed by 'source-map-loader'.
-      { enforce: "pre", test: /\.js$/, loader: "source-map-loader" },
+      // { enforce: "pre", test: /\.js$/, loader: "source-map-loader" },
       {
         test: /\.css$/,
         use: ["style-loader", "css-loader"]
       }
     ]
+  },
+
+  resolve: {
+    extensions: [".ts", ".tsx", ".js", ".json"]
   },
   plugins: [
     new HtmlWebpackPlugin({
