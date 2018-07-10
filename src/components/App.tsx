@@ -12,6 +12,7 @@ import {
 import CodeEditor from "./route_editor";
 
 const Root = styled.div`
+  display: flex;
   width: 100%;
 `;
 
@@ -131,8 +132,8 @@ const Home = () => (
 
 export default () => (
   <Root>
-    <AuthButton />
+    {/* <AuthButton /> */}
     <Route path="/login" component={Login} />
-    <PrivateRoute exact path="/" component={Home} />
+    <PrivateRoute path="/" component={Home} />
   </Root>
 );
