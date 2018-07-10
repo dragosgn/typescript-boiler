@@ -1,5 +1,6 @@
 import * as React from "react";
 import { Route, Link, Redirect, withRouter, Switch } from "react-router-dom";
+import GoogleLogin from "react-google-login";
 import styled from "styled-components";
 import {
   Logo,
@@ -21,7 +22,7 @@ const Public = () => <h3>Public</h3>;
 const Protected = () => <h3>Protected</h3>;
 
 const fakeAuth = {
-  isAuthenticated: true,
+  isAuthenticated: false,
   authenticate(cb) {
     this.isAuthenticated = true;
     setTimeout(cb, 100); // fake async
@@ -64,6 +65,12 @@ interface LoginState {
   redirectToReferrer: boolean;
 }
 
+// or
+
+const responseGoogle = response => {
+  console.log(response);
+};
+
 class Login extends React.Component<LoginProps, LoginState> {
   state = {
     redirectToReferrer: false
@@ -85,6 +92,12 @@ class Login extends React.Component<LoginProps, LoginState> {
 
     return (
       <div>
+        <GoogleLogin
+          clientId="904081604452-kiv1mr405bad1acn09jeg9vu858d4epj.apps.googleusercontent.com"
+          buttonText="Login"
+          onSuccess={responseGoogle}
+          onFailure={responseGoogle}
+        />
         <p>You must log in to view the page at {from.pathname}</p>
         <button onClick={this.login}>Log in</button>
       </div>
@@ -114,10 +127,10 @@ const Home = () => (
   <Root>
     <SideNav>
       <Logo>
-        <img
+        {/* <img
           height={50}
           src="https://lokalleads.s3.amazonaws.com/images/homepage/logo_bw.png"
-        />
+        /> */}
       </Logo>
       <SideNavLink to="/pdf-template-editor">Pdf editor</SideNavLink>
     </SideNav>
